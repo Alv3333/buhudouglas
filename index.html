@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Exempel</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: transparent;
+            margin: 0;
+        }
+
+        #openBrowserBtn {
+            padding: 25px 50px;
+            font-size: 28px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        #openBrowserBtn:hover {
+            background: #34c458;
+            transform: scale(1.07);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<button id="openBrowserBtn">Öppna Browser</button>
+
+<script>
+document.getElementById("openBrowserBtn").addEventListener("click", function() {
+    // Öppna about:blank
+    let newTab = window.open("about:blank", "_blank");
+
+    if (newTab) {
+        // Skriv in ett iframe med din länk som källa
+        newTab.document.write(`
+            <html>
+                <head>
+                    <title>Stens Pluggsida</title>
+                    <style>
+                        body, html {
+                            margin: 0;
+                            padding: 0;
+                            width: 100%;
+                            height: 100%;
+                            overflow: hidden;
+                        }
+                        iframe {
+                            width: 100%;
+                            height: 100%;
+                            border: none;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <iframe src="https://g4bbmyk9.frogseducation.life/"></iframe>
+                </body>
+            </html>
+        `);
+    } else {
+        alert("Fliken kunde inte öppnas. Kontrollera att popup-fönster är tillåtna.");
+    }
+});
+</script>
+
+</body>
+</html>
